@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrimeiroComponenteComponent implements OnInit {
 
+  nome: string;
   constructor() { }
 
   ngOnInit(): void {
+    // this.nome = 'Michelli';
+  }
+
+  passarValor(nomeOutro: string) {
+    this.nome = nomeOutro;
   }
 
 }
