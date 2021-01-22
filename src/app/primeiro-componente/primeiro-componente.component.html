@@ -1,4 +1,7 @@
-<p>primeiro-componente works!</p>
+<p *ngIf="nome === 'Ana Clara'">Minha tag p</p>
 
-<!-- <input type="text" (input)="this.nome = $event.target.value" /> -->
-<input type="text" (input)="passarValor($event.target.value)" /> {{nome}} {{nome}}
+<input type="text" (input)="passarValor($event.target.value)" /> {{nome}}
+
+<div *ngFor="let item of arrayValores">
+    <p *ngIf="item !== 'Mi'"> {{item}} </p>
+</div>
