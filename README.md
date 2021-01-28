@@ -87,3 +87,52 @@ Cada commit será comentado o que foi feito!!
       <p *ngIf="item !== 'Mi'"> {{item}} </p>
     </div>
     ```
+    
+    ------------------------------------------------------------------------------------------------------------------------------------------------------
+# <strong>* 4° commit:</strong>
+  + Criar arquivo com diretórios:
+    - Iniciar o angular --> $ ng g s services/api --skipTests
+      <br> <strong>Obs.:</strong> Para não gerar o arquivo .spec.ts (que serve para teste) é so adicionar "--skipTests" como mencionado acima
+    - Criando base para buscar api: <br>
+      <strong> Arquivo: </strong> services/api.service.ts
+      ```
+      public getImg(): Observable<any>{
+        return this.http.get("link daminha api");
+      }
+      ```
+      <strong> Obs.: </strong> Acima foi criada uma função que tem como objetivo executar um método, sendo: <br>
+        - <strong>método:</strong> Observable
+        - <strong>tipo:</strong> any (any é todos os tipos de dados vão entrar)
+    - No código foi criado uma pasta "models", é comum criar ela para adicionar os dados que serão recuperados
+      <br>
+      <strong> Arquivo: </strong> models/api.ts <br> Nesse arquivo eu adicionei todos os campos da minha api (gestão de informação)
+      ```
+      export class Image{
+        public albumId : number;
+        public id : number;
+        public title : string;
+        public url : string;
+        public thumbnailUrl : string;
+      }
+      ```
+    - Para que as informações fossem chamadas pela api quando a tela for renderizada é necessario adicionar a seguinte linha:
+      <br>
+      <strong> Arquivo: </strong> services/api.service.ts <br>
+      ```
+      constructor(private http:HttpClient ) { }
+      ```
+      Foi criado um componente chamado api para exibir as informações da api (vamos mostrar as informações em .html em api). 
+      <br> Para chamar nossa api temos que chamar da seguinte forma:
+      <br>
+      <strong> Arquivo: </strong> api/api.component.ts <br>
+      ```
+      constructor(private apiService: ApiService) {
+        this.pegarImage();
+      }
+
+      pegarImage() {
+        this.apiService.getImg().subscribe(
+
+        );
+      }
+      ```
