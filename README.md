@@ -136,3 +136,37 @@ Cada commit será comentado o que foi feito!!
         );
       }
       ```
+    ------------------------------------------------------------------------------------------------------------------------------------------------------
+# <strong>* 5° commit:</strong>
+  + Foi importado HttpClient para que a requisição a api funcione;
+  + api/api.component.ts
+    - em "pegarImagem(){...}" que foi criado, vai realizar a chamada de dados <br>
+      ```
+      pegarImagem() {
+        this.apiService.getImg().subscribe(
+          (data:Imagem) => {
+            this.imagens = data;
+            console.log("deu bom", data);
+          },
+          (error:any) => {
+            this.erro = error;
+            console.log("nn deu bom", error);
+          }
+        );
+      }
+      ```
+  + api/component.html
+    - Realizei minha chamada com "*ngFor=" <br>
+      ```
+      <div *ngFor="let item of imagens">
+        <p>{{item.title}}</p>
+        <img [attr.src]="item.thumbnailUrl">
+      </div>
+
+      ```
+  + app.component.html
+    - Fazer a chamada principal <br>
+      ```
+      <app-api></app-api>
+
+      ```
