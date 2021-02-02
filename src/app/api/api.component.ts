@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { Imagem } from '../models/api';
 
 @Component({
   selector: 'app-api',
@@ -8,16 +9,26 @@ import { ApiService } from '../services/api.service';
 })
 export class ApiComponent implements OnInit {
 
+  imagens: any;
+  erro: any;
+
   constructor(private apiService: ApiService) {
-    this.pegarImage();
+    this.pegarImagem();
   }
 
   ngOnInit(): void {
   }
 
-  pegarImage() {
+  pegarImagem() {
     this.apiService.getImg().subscribe(
-
+      (data:Imagem) => {
+        this.imagens = data;
+        console.log("deu bom", data);
+      },
+      (error:any) => {
+        this.erro = error;
+        console.log("nn deu bom", error);
+      }
     );
   }
 

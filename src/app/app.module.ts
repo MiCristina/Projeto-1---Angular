@@ -6,6 +6,7 @@ import { PrimeiroComponenteComponent } from './primeiro-componente/primeiro-comp
 import { AppRoutingModule } from './app-routing.module';
 import { SegundoComponenteComponent } from './segundo-componente/segundo-componente.component';
 import { ApiComponent } from './api/api.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { ApiComponent } from './api/api.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

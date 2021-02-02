@@ -1,4 +1,4 @@
-export class Image{
+export class Imagem{
   public albumId : number;
   public id : number;
   public title : string;
